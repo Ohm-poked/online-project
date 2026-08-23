@@ -1,10 +1,22 @@
-// Outer Loop: Counts hours (from 1 to 3 o'clock)
-for (let hour = 1; hour <= 3; hour++) {
-    console.log("⏰ The hour hand clicks to: " + hour + " o'clock");
+// A "2D Array" - A list that holds separate row lists inside it
+let theaterSeats = [
+    ["Alex", "Ben", "Chloe"],  // Row 0
+    ["Dan", "Emma", "Fred"],   // Row 1
+    ["Gabe", "Hope", "Ian"]    // Row 2
+];
 
-    // Inner Loop: Counts the minutes inside that hour
-    // (We will just count up to 15 minutes so it doesn't flood your screen!)
-    for (let minute = 0; minute <= 15; minute += 5) {
-        console.log("   --> The time is " + hour + ":" + minute);
+// Outer Loop: Steps through each row index (0, 1, 2)
+for (let row = 0; row < theaterSeats.length; row++) {
+    let lineResult = "Row " + row + ": ";
+
+    // Inner Loop: Steps through each seat column index inside that row
+    for (let col = 0; col < theaterSeats[row].length; col++) {
+        // Fetch the exact name sitting at this row and column coordinate
+        let personName = theaterSeats[row][col];
+        
+        lineResult += personName + "\t";
     }
+
+    // Print the completed row list of names
+    console.log(lineResult);
 }
