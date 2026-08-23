@@ -1,22 +1,29 @@
-// A "2D Array" - A list that holds separate row lists inside it
-let theaterSeats = [
-    ["Alex", "Ben", "Chloe"],  // Row 0
-    ["Dan", "Emma", "Fred"],   // Row 1
-    ["Gabe", "Hope", "Ian"]    // Row 2
-];
+//global.crypto = require('crypto');
 
-// Outer Loop: Steps through each row index (0, 1, 2)
-for (let row = 0; row < theaterSeats.length; row++) {
-    let lineResult = "Row " + row + ": ";
+const express = require('express');
+const mongoose = require('mongoose');
+require('dotenv').config(); // 👈 1. Loads your secret .env file tools
 
-    // Inner Loop: Steps through each seat column index inside that row
-    for (let col = 0; col < theaterSeats[row].length; col++) {
-        // Fetch the exact name sitting at this row and column coordinate
-        let personName = theaterSeats[row][col];
-        
-        lineResult += personName + "\t";
-    }
+const app = express();
 
-    // Print the completed row list of names
-    console.log(lineResult);
-}
+
+app.use(express.json());
+
+// 👈 2. Fetches your hidden link from the .env file
+const dbURI = process.env.MONGO_URI; 
+
+// 👈 3. Connects Mongoose to the database
+// 3. PUT IT HERE: Connect to MongoDB using the environment variable
+mongoose.connect(dbURI)
+  .then(() => console.log('Successfully connected to your Cloud MongoDB database securely!'))
+  .catch(err => console.error('Database connection error:', err));
+
+// Routes
+const orderRoutes = require('./routes/orderRoutes');
+app.get('/', (req, res) => res.send('<h1>Hello, World!</h1>'));
+app.use('/orders', orderRoutes);
+
+const PORT = process.env.PORT || 3000;
+
+
+app.listen(PORT, () => console.log("🚀 Server listening on port " + PORT));
