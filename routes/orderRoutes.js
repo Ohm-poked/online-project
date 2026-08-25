@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router(); // 👈 This is a mini-app just for tracking these routes!
 
+// Routes
+
+
+
 // Move your data structure here
 let currentOrders = [
     { customer: "Alex", items: ["Laptop", "Mouse"] },

@@ -16,5 +16,14 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.9.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ohm-poked/online-project.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ohm-poked/online-project/issues"
+  },
+  "homepage": "https://github.com/Ohm-poked/online-project#readme"
 }
